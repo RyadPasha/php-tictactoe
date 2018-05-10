@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="beporter-codechallenge">
+    <description>PSR-2-based preset config for uniform sniffing.</description>
+
+    <arg value="sp"/>
+    <arg name="extensions" value="php"/>
+    <arg name="report" value="full"/>
+    <arg name="report" value="summary"/>
+
+    <file>./</file>
+    <exclude-pattern>\.git</exclude-pattern>
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>tmp/*</exclude-pattern>
+
+    <rule ref="PSR2"></rule>
+</ruleset>

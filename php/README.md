@@ -42,6 +42,13 @@ To produce code coverage: `vendor/bin/phpunit --coverage-html tmp/coverage/`
 To view the coverage report, open `tmp/coverage/index.html` in a web browser.
 
 
+### Coding Standards
+
+This project follows [PSR-2](https://www.php-fig.org/psr/psr-2/) for coding style standards and [PSR-4](https://www.php-fig.org/psr/psr-4/) for class autoloading.
+
+To verify the code against the standards: `vendor/bin/phpcs`
+
+
 ## Coding Challenge Notes
 
 ### Email invitation to complete the challenge
