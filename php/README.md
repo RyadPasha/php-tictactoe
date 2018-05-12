@@ -11,7 +11,23 @@ A command line implementation of [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic
 
 ## Usage
 
-Play the game with `php tictactoe.php`.
+Play the game with `./play.sh`. This script will prompt you to configure available options.
+
+
+### Advanced usage
+
+Available `tictactoe.php` command line options:
+* `--p1-level 1|2|3`
+* `--p2-level 1|2|3`
+* `--p1-mark X`
+* `--p2-mark O`
+
+Setting a difficulty level for any player will cause that player to be controlled by the CPU.
+
+Examples:
+* `php tictactoe.php  # Defaults used: P1=human (X), P2=human (O)`
+* `php tictactoe.php --p1-mark 🍺 --p2-mark 🍶  # Human vs human (beer vs sake)`
+* `php tictactoe.php --p1-level 1 --p2-level 3  # Easy cpu vs hard cpu`
 
 
 ## Development
