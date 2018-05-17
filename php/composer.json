@@ -1,0 +1,29 @@
+{
+    "name": "beporter/tic-tac-toe",
+    "type": "project",
+    "license": "proprietary",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Brian Porter",
+            "email": "beporter@users.sourceforge.net"
+        }
+    ],
+    "require": {
+        "php": "~7.1",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+        "ext-xdebug": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Beporter\\Tictactoe\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Beporter\\Tictactoe\\Tests\\": "tests/"
+        }
+    }
+}
