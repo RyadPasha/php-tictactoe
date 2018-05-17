@@ -1,10 +1,15 @@
 <?php
 /**
- * Tic-Tac-Toe main() entry point. Executes the relocated game logic.
+ * Tic-Tac-Toe main() entry point. Imports the composer autoloader, then
+ * creates and executes the TicTacToeApplication instance. This file is kept
+ * as small as possible to keep the difficult-to-test surface area of the
+ * project low.
  *
  * Execute the game using `php tictactoe.php`. See the local README.md for details.
  */
 
-require 'src/old_logic.php';
+require 'vendor/autoload.php';
 
-Game::main();
+use Beporter\Tictactoe\TicTacToeApplication;
+
+(new TicTacToeApplication)->run();
