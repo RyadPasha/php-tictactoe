@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title><![CDATA[beporter Tic-Tac-Toe]]></title>
+
+    <files>
+        <directory>./src</directory>
+
+        <ignore-hidden>true</ignore-hidden>
+		<ignore-symlinks>true</ignore-symlinks>
+    </files>
+
+    <parser>
+        <encoding>utf8</encoding>
+        <target>./tmp/phpdoc-build</target>
+        <extensions>
+            <extension>php</extension>
+        </extensions>
+        <visibility></visibility>
+    </parser>
+
+    <transformer>
+        <target>./tmp/docs</target>
+    </transformer>
+
+    <transformations>
+        <template name="responsive-twig" />
+    </transformations>
+
+    <logging>
+		<level>error</level>
+		<default>./tmp/phpdoc.log</default>
+		<errors>./tmp/phpdoc_errors.log</errors>
+	</logging>
+</phpdoc>

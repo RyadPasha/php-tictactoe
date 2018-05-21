@@ -49,6 +49,15 @@ This project follows [PSR-2](https://www.php-fig.org/psr/psr-2/) for coding styl
 To verify the code against the standards: `vendor/bin/phpcs`
 
 
+### Generating Docs
+
+The project informally uses [phpDocumentor](https://www.phpdoc.org/)-compatible syntax. To validate proper usage, you can [install the phpdoc phar](https://docs.phpdoc.org/getting-started/installing.html#phar). (You should have the `intl` PHP extension and [GraphViz](https://www.graphviz.org/) installed on your development system already.)
+
+Assuming the executable is in your `$PATH`, run `$ phpdoc` from this directory, which will use the `phpdoc.dist.xml` file for configuration.
+
+Once generated, you can open `tmp/docs/index.html` in your browser to review the documentation.
+
+
 ## Coding Challenge Notes
 
 ### Email invitation to complete the challenge
