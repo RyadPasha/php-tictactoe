@@ -1,5 +1,12 @@
 <?php
+// phpcs:ignoreFile -- No need to sniff/correct the original logic.
 
+/**
+ * Existing single-class implementation of tic-tac-toe.
+ *
+ * @ignore Don't process this file with phpDocumentor.
+ * @codeCoverageIgnore There isn't any coverage for the original code.
+ */
 class Game {
   // The game board and the game status
   public static $board = array("0", "1", "2", "3", "4", "5", "6", "7", "8");
@@ -137,4 +144,7 @@ class Game {
 
 }
 
-Game::main();
+
+
+
+//Game::main();

@@ -11,7 +11,7 @@ A command line implementation of [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic
 
 ## Usage
 
-Play the game with `php game.php`.
+Play the game with `php tictactoe.php`.
 
 
 ## Development
