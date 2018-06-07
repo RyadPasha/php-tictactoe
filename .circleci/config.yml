@@ -1,0 +1,69 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      # ref: https://hub.docker.com/r/circleci/php/tags/
+      - image: circleci/php:7.1.18-cli-node-browsers
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mysql:9.4
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "php/composer.json" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          command: composer install -n --prefer-dist
+          working_directory: ~/repo/php
+      - run:
+          command: wget http://www.phpdoc.org/phpDocumentor.phar
+          working_directory: ~/repo/php
+
+      - save_cache:
+          paths:
+            - ./php/vendor
+          key: v1-dependencies-{{ checksum "php/composer.json" }}
+
+      # run tests!
+      - run:
+          name: PHP Documentor
+          command: |
+            mkdir -p ~/phpdoc
+            php phpDocumentor.phar
+          working_directory: ~/repo/php
+          when: always
+      - store_artifacts:
+          path: php/tmp/docs
+
+      - run:
+          name: PHP CodeSniffer
+          command: vendor/bin/phpcs -n
+          working_directory: ~/repo/php
+          when: always
+
+      - run:
+          name: PHPUnit
+          command: |
+            mkdir -p ~/phpunit ~/coverage
+            vendor/bin/phpunit --log-junit ~/phpunit/junit.xml --coverage-html ~/coverage
+          working_directory: ~/repo/php
+          when: always
+      - store_test_results:
+          path: ~/phpunit
+      - store_artifacts:
+          path: ~/coverage
