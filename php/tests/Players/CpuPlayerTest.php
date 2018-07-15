@@ -141,50 +141,6 @@ class CpuPlayerTest extends TestCase
     }
 
     /**
-     * Test that ::minimaxOrHeuristic() engages minimax when the board
-     * dimension is low.
-     */
-    public function testMinimaxOrHeuristicLowDimension()
-    {
-        $mock = $this->getMockBuilder(CpuPlayer::class)
-            ->setConstructorArgs(['X'])
-            ->setMethods(['minimax'])
-            ->getMock();
-        $mock->expects($this->once())
-            ->method('minimax')
-            ->with($this->Game)
-            ->willReturn(42);
-
-        $this->assertEquals(
-            42,
-            $this->invokeMethod($mock, 'minimaxOrHeuristic', [$this->Game]),
-            'The board position returned should be that of our minimax() mock.'
-        );
-    }
-
-    /**
-     * Test that ::minimaxOrHeuristic() returns false when the board
-     * dimension is high.
-     */
-    public function testMinimaxOrHeuristicHighDimension()
-    {
-        $bigGame = $this->getMockBuilder(TestBigGame::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-        $mock = $this->getMockBuilder(CpuPlayer::class)
-            ->setConstructorArgs(['X'])
-            ->setMethods(['minimax'])
-            ->getMock();
-        $mock->expects($this->never())
-            ->method('minimax');
-
-        $this->assertFalse(
-            $this->invokeMethod($mock, 'minimaxOrHeuristic', [$bigGame]),
-            'The minimaxOrHeuristic() method should return false when board dimension is large.'
-        );
-    }
-
-    /**
      * Test a variety of internal strategy helper methods.
      *
      * @param string $method The name of the CpuPlayer helper method to test.
@@ -260,72 +216,6 @@ class CpuPlayerTest extends TestCase
             ],
 
             [
-                'createFork',
-                [
-                    'X', null, null,
-                    'O', 'O', null,
-                    'X', 'O', 'X',
-                ],
-                2,
-                'createFork() should return the location with the most possible forks.',
-            ],
-
-            [
-                'createFork',
-                [
-                    'X', null, null,
-                    'O', null, null,
-                    null, null, null,
-                ],
-                false,
-                'createFork() should return false when there are no fork options.',
-            ],
-
-            [
-                'blockForkPotential',
-                [
-                    'O', null, null,
-                    'X', 'X', null,
-                    'O', 'X', 'O',
-                ],
-                2,
-                'blockForkPotential() should return the location with the most possible opponent forks.',
-            ],
-
-            [
-                'blockForkPotential',
-                [
-                    'X', null, null,
-                    'O', null, null,
-                    null, null, null,
-                ],
-                false,
-                'blockForkPotential() should return false when there are no opponent fork options.',
-            ],
-
-            [
-                'createTwoInARow',
-                [
-                    'X', null, null,
-                    'O', null, null,
-                    null, 'X', null,
-                ],
-                1,
-                'createTwoInARow() should return the open spot with the most intersects.',
-            ],
-
-            [
-                'createTwoInARow',
-                [
-                    null, null, null,
-                    'O', null, null,
-                    null, null, null,
-                ],
-                false,
-                'createTwoInARow() should return false when there are no viable intersects.',
-            ],
-
-            [
                 'centerIfAvailable',
                 [
                     null, null, null,
@@ -345,105 +235,6 @@ class CpuPlayerTest extends TestCase
                 ],
                 false,
                 'centerIfAvailable() should return false for an already-claimed center spot.',
-            ],
-
-            [
-                'cornerOpening',
-                [
-                    null, null, null,
-                    null, null, null,
-                    null, null, null,
-                ],
-                0,
-                'cornerOpening() claim a corner on an empty board.',
-            ],
-
-            [
-                'cornerOpening',
-                [
-                    null, null, null,
-                    null, 'X', null,
-                    null, null, null,
-                ],
-                false,
-                'cornerOpening() should return false for a non-empty board.',
-            ],
-
-            [
-                'oppositeCorner',
-                [
-                    null, null, null,
-                    null, null, null,
-                    null, null, null,
-                ],
-                false,
-                'oppositeCorner() should return false for an empty board.',
-            ],
-
-            [
-                'oppositeCorner',
-                [
-                    null, null, null,
-                    null, null, null,
-                    'O', null, null,
-                ],
-                2,
-                'oppositeCorner() should return an opposite corner after a corner open.',
-            ],
-
-            [
-                'oppositeCorner',
-                [
-                    null, 'O', null,
-                    null, null, null,
-                    null, null, null,
-                ],
-                false,
-                'oppositeCorner() should return false if first move was not a corner.',
-            ],
-
-            [
-                'emptyCorner',
-                [
-                    'O', null,'O',
-                    null, null, null,
-                    null, null, null,
-                ],
-                6,
-                'emptyCorner() should return the first available corner.',
-            ],
-
-            [
-                'emptyCorner',
-                [
-                    'O', null,'X',
-                    null, null, null,
-                    'X', null,'O',
-                ],
-                false,
-                'emptyCorner() should false when all corners are claimed.',
-            ],
-
-            [
-                'emptySide',
-                [
-                    null, 'X', null,
-                    'O', null,'O',
-                    null, null, null,
-                ],
-                7,
-                'emptySide() should return the first available side.',
-            ],
-
-            [
-                'emptySide',
-                [
-                    null, 'X', null,
-                    'O', null,'O',
-                    null, 'X', null,
-                ],
-                false,
-                'emptySide() should false when all sides are claimed.',
             ],
 
             [
@@ -470,7 +261,6 @@ class CpuPlayerTest extends TestCase
         ];
     }
 
-
     /**
      * Test that ::minimax() invokes its recursive helper.
      */
@@ -495,5 +285,32 @@ class CpuPlayerTest extends TestCase
             $this->invokeMethod($mock, 'minimax', [$this->Game]),
             'The minimax strategy should invoke its recursive helper.'
         );
+    }
+
+    /**
+     * Test that ::randomGuess() is (statistically) correct.
+     */
+    public function testRandomGuess()
+    {
+        $iterations = 100;
+        $positions = [];
+        for ($i = 0; $i < $iterations; $i++) {
+            $positions[] = $position = $this->invokeMethod($this->P1, 'randomGuess', [$this->Game]);
+            $this->assertTrue(
+                in_array(
+                    $position,
+                    $this->Game->getBoard()->available()
+                ),
+                'randomGuess should always return a position actually playable on the board.'
+            );
+        }
+
+        foreach (array_count_values($positions) as $position => $count) {
+            $this->assertLessThan(
+                $iterations / 2,
+                $count,
+                "Each position should never be used the majority of the time. (position = $position, count = $count)"
+            );
+        }
     }
 }
