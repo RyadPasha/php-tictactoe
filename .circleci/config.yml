@@ -22,8 +22,14 @@ jobs:
           - v1-dependencies-
 
       - run:
-          command: composer install -n --prefer-dist
+          name: Install Graphviz
+          command: |
+            sudo apt-get install graphviz
       - run:
+          name: Composer install
+          command: composer install -n --prefer-dist --ansi
+      - run:
+          name: Install phpDocumentor
           command: wget http://www.phpdoc.org/phpDocumentor.phar
 
       - save_cache:
