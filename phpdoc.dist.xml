@@ -5,6 +5,7 @@
     <files>
         <directory>./src</directory>
 
+        <ignore>old_logic.php</ignore>
         <ignore-hidden>true</ignore-hidden>
 		<ignore-symlinks>true</ignore-symlinks>
     </files>
@@ -23,7 +24,7 @@
     </transformer>
 
     <transformations>
-        <template name="responsive-twig" />
+        <template name="clean" />
     </transformations>
 
     <logging>
