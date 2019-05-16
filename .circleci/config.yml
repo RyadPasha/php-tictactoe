@@ -40,12 +40,10 @@ jobs:
       # run tests!
       - run:
           name: PHP Documentor
-          command: |
-            mkdir -p ~/phpdoc
-            php phpDocumentor.phar
+          command: php phpDocumentor.phar
           when: always
       - store_artifacts:
-          path: php/tmp/docs
+          path: tmp/docs
 
       - run:
           name: PHP CodeSniffer
