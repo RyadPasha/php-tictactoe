@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # ref: https://hub.docker.com/r/circleci/php/tags/
-      - image: circleci/php:7.1.18-cli-node-browsers
+      - image: circleci/php:7.1-cli
 
     working_directory: ~/repo
 
