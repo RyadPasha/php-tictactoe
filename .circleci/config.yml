@@ -61,3 +61,4 @@ jobs:
           path: ~/phpunit
       - store_artifacts:
           path: ~/coverage
+          destination: coverage
