@@ -39,7 +39,7 @@ Examples:
 
 ### Getting the Code
 
-Run: `git clone git@github.com:beporter/coding_challenges.git`
+Run: `git clone https://github.com/beporter/php-tictactoe.git`
 
 
 ### Writing Tests
@@ -67,7 +67,7 @@ To verify the code against the standards: `vendor/bin/phpcs`
 
 ### Generating Docs
 
-The project informally uses [phpDocumentor](https://www.phpdoc.org/)-compatible syntax. To validate proper usage, you can [install the phpdoc phar](https://docs.phpdoc.org/getting-started/installing.html#phar). (You should have the `intl` PHP extension and [GraphViz](https://www.graphviz.org/) installed on your development system already.)
+The project informally uses [phpDocumentor](https://www.phpdoc.org/)-compatible syntax. To validate proper usage, you can [install the phpdoc phar](https://docs.phpdoc.org/getting-started/installing.html#phar). (You should have the `intl` PHP extension and [GraphViz](https://www.graphviz.org/) installed on your development system.)
 
 Assuming the executable is in your `$PATH`, run `$ phpdoc` from this directory, which will use the `phpdoc.dist.xml` file for configuration.
 

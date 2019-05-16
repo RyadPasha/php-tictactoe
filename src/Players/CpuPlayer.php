@@ -4,7 +4,7 @@
  * Difficulty defaults to `2` if not set explicitly via ::setDifficulty()
  * after instantiation.
  *
- * Implements logic for both a neuristic approach at lower difficulties as well
+ * Implements logic for both a heuristic approach at lower difficulties as well
  * as a minimax approach for perfect play.
  */
 
