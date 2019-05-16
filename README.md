@@ -2,6 +2,8 @@
 
 A command line implementation of [Tic Tac Toe](https://en.wikipedia.org/wiki/Tic-tac-toe).
 
+[![CircleCI](https://circleci.com/gh/beporter/php-tictactoe.svg?style=svg)](https://circleci.com/gh/beporter/php-tictactoe)
+
 
 ## Requirements
 
