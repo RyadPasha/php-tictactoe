@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # ref: https://hub.docker.com/r/circleci/php/tags/
-      - image: circleci/php:7.1.18-cli-node-browsers
+      - image: circleci/php:7.1-cli
 
     working_directory: ~/repo
 
@@ -22,8 +22,14 @@ jobs:
           - v1-dependencies-
 
       - run:
-          command: composer install -n --prefer-dist
+          name: Install Graphviz
+          command: |
+            sudo apt-get install graphviz
       - run:
+          name: Composer install
+          command: composer install -n --prefer-dist --ansi
+      - run:
+          name: Install phpDocumentor
           command: wget http://www.phpdoc.org/phpDocumentor.phar
 
       - save_cache:
@@ -34,12 +40,11 @@ jobs:
       # run tests!
       - run:
           name: PHP Documentor
-          command: |
-            mkdir -p ~/phpdoc
-            php phpDocumentor.phar
+          command: php phpDocumentor.phar
           when: always
       - store_artifacts:
-          path: php/tmp/docs
+          path: tmp/docs
+          destination: docs
 
       - run:
           name: PHP CodeSniffer
@@ -56,3 +61,4 @@ jobs:
           path: ~/phpunit
       - store_artifacts:
           path: ~/coverage
+          destination: coverage
