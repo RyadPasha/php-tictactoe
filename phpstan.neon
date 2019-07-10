@@ -1,0 +1,14 @@
+parameters:
+	excludes_analyse:
+		- %currentWorkingDirectory%/vendor
+		- %currentWorkingDirectory%/src/old_logic.php
+	ignoreErrors:
+		-
+			message: '/does not call parent constructor/'
+			path: %currentWorkingDirectory%/src/Boards/ReadOnlyBoard.php
+		-
+			message: '/Cannot cast array<string>|bool|string|null to string./'
+			path: %currentWorkingDirectory%/src/TicTacToeCommand.php
+		-
+			message: '/Game::run() should return string|true but returns bool|string./'
+			path: %currentWorkingDirectory%/src/Game.php
