@@ -52,6 +52,11 @@ jobs:
           when: always
 
       - run:
+          name: PHPStan
+          command: vendor/bin/phpstan analyse -l max src
+          when: always
+
+      - run:
           name: PHPUnit
           command: |
             mkdir -p ~/phpunit ~/coverage
