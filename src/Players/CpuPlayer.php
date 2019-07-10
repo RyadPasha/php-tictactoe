@@ -224,7 +224,7 @@ class CpuPlayer extends Player
         if ($game->gameOver()) {
             return [
                 'score' => $this->minimaxCalculateScore($game, $depth),
-                'position' => $bestPosition,
+                'position' => $bestPosition, // @FIXME: var not defined?!?!
             ];
         }
 
