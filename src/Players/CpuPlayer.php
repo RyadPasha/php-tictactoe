@@ -35,7 +35,7 @@ class CpuPlayer extends Player
      *
      * @param int $difficulty The desired difficulty level for the CPU player.
      *     Range: 1-3.
-     * @return \Beporter\Tictactoe\Players\Player Always self.
+     * @return \Beporter\Tictactoe\Players\CpuPlayer Always self.
      * @throws \OutOfRangeException when the provided $dimension is zero or negative.
      */
     public function setDifficulty(int $difficulty): CpuPlayer
@@ -188,8 +188,7 @@ class CpuPlayer extends Player
      *
      * @param \Beporter\Tictactoe\Interfaces\TryMovesInterface $game The
      *     current Game state.
-     * @return int|false A Board index to mark, or false if this strategy
-     *     results in no potential move.
+     * @return int A randomly chosen Board index to mark.
      */
     protected function randomGuess(TryMovesInterface $game): int
     {

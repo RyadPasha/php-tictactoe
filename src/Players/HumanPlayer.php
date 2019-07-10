@@ -20,7 +20,7 @@ class HumanPlayer extends Player
     /**
      * The callback method used to request user input from the console.
      *
-     * @var \Callable
+     * @var callable
      */
     protected $asker = null;
 
@@ -29,7 +29,7 @@ class HumanPlayer extends Player
      *
      * @param callable $asker A callback function that will prompt the user
      *    for input and return an integer Board index value when called.
-     * @return \Beporter\Tictactoe\Players\Player Always self.
+     * @return \Beporter\Tictactoe\Players\HumanPlayer Always self.
      */
     public function setAsker(callable $asker): HumanPlayer
     {
@@ -39,7 +39,7 @@ class HumanPlayer extends Player
     }
 
     /**
-     * Invokes the Callable ::$asker to obtain the next move from the human
+     * Invokes the callable ::$asker to obtain the next move from the human
      * user via the CLI console.
      *
      * @param \Beporter\Tictactoe\Interfaces\TryMovesInterface $game The current Game state

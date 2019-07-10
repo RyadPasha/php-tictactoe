@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Beporter\Tictactoe;
 
 use Beporter\Tictactoe\Boards\Board;
-use Symfony\Component\Console\Helper\HelperInterface;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
@@ -38,14 +38,14 @@ class FetchMove
     /**
      * Hang on to a Symfony OutputInterface to pass to Question::ask().
      *
-     * @var \Symfony\Component\Console\Input\OutputInterface
+     * @var \Symfony\Component\Console\Output\OutputInterface
      */
     protected $output = null;
 
     /**
-     * Hang on to a Symfony HelperInterface to pass to Question::ask().
+     * Hang on to a Symfony QuestionHelper to pass to Question::ask().
      *
-     * @var \Symfony\Component\Console\Input\InputInterface
+     * @var \Symfony\Component\Console\Helper\QuestionHelper
      */
     protected $questionHelper = null;
 
@@ -55,13 +55,13 @@ class FetchMove
      * @param string $mark
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
-     * @param \Symfony\Component\Console\Helper\HelperInterface $questionHelper
+     * @param \Symfony\Component\Console\Helper\QuestionHelper $questionHelper
      */
     public function __construct(
         string $mark,
         InputInterface $input,
         OutputInterface $output,
-        HelperInterface $questionHelper
+        QuestionHelper $questionHelper
     ) {
         $this->mark = $mark;
         $this->input = $input;

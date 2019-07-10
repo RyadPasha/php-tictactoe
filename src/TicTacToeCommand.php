@@ -70,7 +70,7 @@ class TicTacToeCommand extends Command
      *
      * @param \Symfony\Component\Console\Input\InputInterface $input The input
      *     interface provides access to args, options and interactive input.
-     * @param \Symfony\Component\Console\Input\OutputInterface $output The
+     * @param \Symfony\Component\Console\Output\OutputInterface $output The
      *     output interface provides access to write to the console.
      * @return int Zero on successful execution, >0 on error.
      */
@@ -107,7 +107,7 @@ class TicTacToeCommand extends Command
      * @param \Symfony\Component\Console\Input\InputInterface $input The input
      *     interface provides access to command line args, options and
      *     interactive input.
-     * @param \Symfony\Component\Console\Input\OutputInterface $output The
+     * @param \Symfony\Component\Console\Output\OutputInterface $output The
      *     output interface provides access to write to the console.
      * @return \Beporter\Tictactoe\Players\Player The initialized Player object.
      */

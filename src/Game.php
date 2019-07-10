@@ -76,15 +76,15 @@ class Game implements PlayGameInterface, TryMovesInterface
      * by ::undo(). When it is present, this property supercedes ::$board.
      * See ::board().
      *
-     * @var \Beporter\Tictactoe\Boards\Board
+     * @var null|\Beporter\Tictactoe\Boards\Board
      */
     protected $speculativeBoard = null;
 
     /**
      * Constructor. Set up the Board and add two Players.
      *
-     * @param \Beporter\Tictactoe\Players\Player First player instance.
-     * @param \Beporter\Tictactoe\Players\Player Second player instance.
+     * @param \Beporter\Tictactoe\Players\Player $p1 First player instance.
+     * @param \Beporter\Tictactoe\Players\Player $p2 Second player instance.
      */
     public function __construct(Player $p1, Player $p2)
     {
